@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 class manager {
     
 }
-
+function questions(){
 inquirer.prompt([
     {
         type: 'input',
@@ -26,3 +26,5 @@ inquirer.prompt([
         name: 'github',
     },
     ])
+}
+questions()

@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 class intern {
     
 }
-
+function questions(){
 inquirer.prompt([
     {
         type: 'input',
@@ -26,3 +26,6 @@ inquirer.prompt([
         name: 'school',
     },
     ])
+}
+
+questions()
