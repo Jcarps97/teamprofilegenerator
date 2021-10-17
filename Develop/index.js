@@ -1,11 +1,23 @@
 const inquirer = require("inquirer")
 const fs = require("fs");
-const engineer = require("./library/engineer")
-const intern = require("./library/intern")
-const manager = require("./library/manager")
+const Engineer = require("./library/engineer")
+const Intern = require("./library/intern")
+const Manager = require("./library/manager")
+
+
+//Employee array
+managerArray = []
+engineerArray = []
+internArray = []
 
 
 //Base questions
+const initQuestion = 
+{
+    type: 'confirm',
+    message: 'Do you want to add an employee?',
+    name: 'initial',
+}
 const questionsAll = [
     {
         type: 'input',
@@ -56,7 +68,7 @@ const questionIntern = [
 ]
 
 //Write HTML
-function createHTML(data){
+function createHTML(response, data){
     `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,27 +80,71 @@ function createHTML(data){
 </head>
 <body>
     <section>
-        <header>
-            <h2>${data.name}</h2>
-            <h3>${data.position}</h3>
-        </header>
-        <main>
-            <p>${data.id}</p>
-            <p>${data.email}</p>
-            <p>${data.github}</p>
-            <p>${data.school}</p>
-            <p>${data.office}</p>
-        </main>
+    ${createManager()}
+    <section>
+    <section>
+    ${createEngineer()}
+    <section>
+    <section>
+    ${createIntern()}
     <section>
 </body>
 </html>`
-fs.writeFile('index.html',html,function(err){
+fs.writeFile('index.html', html ,function(err){
     if (err) {
         console.log(err)
     };
     })
 
 }
+
+function createManager() {
+    const managerarray2 = ""
+    for (let i = 0; i < managerArray.length; i++){
+        managerarray2 += `<header>
+        <h2>${response.name}</h2>
+        <h3>${response.position}</h3>
+        </header>
+        <main>
+        <p>${response.id}</p>
+        <p href="mailto:${response.email}">${response.email}</p>
+        <p>${data.office}</p>
+        </main>`
+    }
+return managerarray2
+}
+function createEngineer() {
+    const engineerarray2 = ""
+    for (let i = 0; i < engineerArray.length; i++){
+        engineerarray2 += `<header>
+        <h2>${response.name}</h2>
+        <h3>${response.position}</h3>
+        </header>
+        <main>
+        <p>${response.id}</p>
+        <p href="mailto:${response.email}">${response.email}</p>
+        <p href="https://github.com/${data.github}">${data.github}</p>
+        </main>`
+    }
+    return engineerarray2
+}
+
+function createIntern() {
+    const internarray2 = ""
+    for (let i = 0; i < internArray.length; i++){
+        internarray2 += `<header>
+        <h2>${response.name}</h2>
+        <h3>${response.position}</h3>
+        </header>
+        <main>
+        <p>${response.id}</p>
+        <p href="mailto:${response.email}">${response.email}</p>
+        <p>${data.school}</p>
+        </main>`
+    }
+    return internarray2
+}
+
 
 //Base function
 function init() {
@@ -99,16 +155,45 @@ function init() {
         email = response.email;
         if(response.position === 'Manager') {
             inquirer.prompt(questionManager)
+            .then(function(data){
+                // console.log(data, response)
+                const testManager = new Manager(name, id, email, data.office)
+                // console.log(testManager)
+                managerArray.push(testManager)
+                // console.log(managerArray)
+                addEmployee()
+            })
         }
         else if(response.position === 'Engineer'){
             inquirer.prompt(questionEngineer)
+            .then(function(data){
+                const testEngineer = new Engineer(name, id, email, data.github)
+                engineerArray.push(testEngineer)
+                addEmployee()
+            })
         }
         else if(response.position === 'Intern'){
             inquirer.prompt(questionIntern)
+            .then(function(data){
+                const testIntern = new Intern(name, id, email, data.school)
+                internArray.push(testIntern)
+                addEmployee()
+            })
         }
     });
-    // return data;
+}
+function addEmployee(){
+    inquirer.prompt(initQuestion)
+    .then(function(answer){
+    if (answer.initial === true){
+        init()
+    }
+    else {
+        createHTML()
+        // return;
+    }
+})
 }
 
-init()
-// createHTML(data)
+addEmployee()
+
