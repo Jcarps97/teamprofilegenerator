@@ -1,7 +1,8 @@
 const inquirer = require("inquirer")
-const engineer = require("./engineer")
-const intern = require("./intern")
-const manager = require("./manager")
+const fs = require("fs");
+const engineer = require("./library/engineer")
+const intern = require("./library/intern")
+const manager = require("./library/manager")
 
 
 //Base questions
@@ -54,6 +55,41 @@ const questionIntern = [
     },
 ]
 
+//Write HTML
+function createHTML(data){
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"></link>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <header>
+            <h2>${data.name}</h2>
+            <h3>${data.position}</h3>
+        </header>
+        <main>
+            <p>${data.id}</p>
+            <p>${data.email}</p>
+            <p>${data.github}</p>
+            <p>${data.school}</p>
+            <p>${data.office}</p>
+        </main>
+    <section>
+</body>
+</html>`
+fs.writeFile('index.html',html,function(err){
+    if (err) {
+        console.log(err)
+    };
+    })
+
+}
+
 //Base function
 function init() {
     inquirer.prompt(questionsAll)
@@ -61,16 +97,18 @@ function init() {
         name = response.name;
         id = response.id;
         email = response.email;
-    if(questionsAll.role === 'manager') {
-        inquirer.prompt(questionManager)
-    }
-    else if(questionsAll.role === 'engineer'){
-        inquirer.prompt(questionEngineer)
-    }
-    else if(questionsAll.role === 'intern'){
-        inquirer.prompt(questionIntern)
-    }
+        if(response.position === 'Manager') {
+            inquirer.prompt(questionManager)
+        }
+        else if(response.position === 'Engineer'){
+            inquirer.prompt(questionEngineer)
+        }
+        else if(response.position === 'Intern'){
+            inquirer.prompt(questionIntern)
+        }
     });
+    // return data;
 }
 
 init()
+// createHTML(data)
