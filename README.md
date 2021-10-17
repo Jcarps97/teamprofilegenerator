@@ -9,3 +9,6 @@ Video:
 
 
 Github:
+https://github.com/Jcarps97/teamprofilegenerator.git
+https://github.com/Jcarps97/teamprofilegenerator
+https://jcarps97.github.io/teamprofilegenerator/
