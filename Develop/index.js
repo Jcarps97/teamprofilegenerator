@@ -13,11 +13,11 @@ internArray = []
 
 //Base questions
 const initQuestion = 
-{
-    type: 'confirm',
-    message: 'Do you want to add an employee?',
-    name: 'initial',
-}
+    {
+        type: 'confirm',
+        message: 'Do you want to add an employee?',
+        name: 'initial',
+    }
 const questionsAll = [
     {
         type: 'input',
@@ -102,28 +102,29 @@ function createManager() {
     const managerarray2 = ""
     for (let i = 0; i < managerArray.length; i++){
         managerarray2 += `<header>
-        <h2>${response.name}</h2>
-        <h3>${response.position}</h3>
+        <h2>${managerArray.name}</h2>
+        <h3>${managerArray.position}</h3>
         </header>
         <main>
-        <p>${response.id}</p>
-        <p href="mailto:${response.email}">${response.email}</p>
-        <p>${data.office}</p>
+        <p>${managerArray.id}</p>
+        <p href="mailto:${managerArray.email}">${managerArray.email}</p>
+        <p>${managerArray.data.office}</p>
         </main>`
     }
 return managerarray2
 }
+
 function createEngineer() {
     const engineerarray2 = ""
     for (let i = 0; i < engineerArray.length; i++){
         engineerarray2 += `<header>
-        <h2>${response.name}</h2>
-        <h3>${response.position}</h3>
+        <h2>${engineerArray.name}</h2>
+        <h3>${engineerArray.position}</h3>
         </header>
         <main>
-        <p>${response.id}</p>
-        <p href="mailto:${response.email}">${response.email}</p>
-        <p href="https://github.com/${data.github}">${data.github}</p>
+        <p>${engineerArray.id}</p>
+        <p href="mailto:${engineerArray.email}">${engineerArray.email}</p>
+        <p href="https://github.com/${engineerArray.data.github}">${engineerArray.data.github}</p>
         </main>`
     }
     return engineerarray2
@@ -133,13 +134,13 @@ function createIntern() {
     const internarray2 = ""
     for (let i = 0; i < internArray.length; i++){
         internarray2 += `<header>
-        <h2>${response.name}</h2>
-        <h3>${response.position}</h3>
+        <h2>${internArray.name}</h2>
+        <h3>${internArray.position}</h3>
         </header>
         <main>
-        <p>${response.id}</p>
-        <p href="mailto:${response.email}">${response.email}</p>
-        <p>${data.school}</p>
+        <p>${internArray.id}</p>
+        <p href="mailto:${internArray.email}">${internArray.email}</p>
+        <p>${internArray.data.school}</p>
         </main>`
     }
     return internarray2
