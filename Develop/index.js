@@ -103,11 +103,11 @@ function createManager() {
     for (let i = 0; i < managerArray.length; i++){
         managerarray2 += `<header>
         <h2>${managerArray[i].name}</h2>
-        <h3>${managerArray[i].position}</h3>
+        <h3>Manager</h3>
         </header>
         <main>
         <p>${managerArray[i].id}</p>
-        <p href="mailto:${managerArray[i].email}">${managerArray[i].email}</p>
+        <a href="mailto:${managerArray[i].email}">${managerArray[i].email}</a>
         <p>${managerArray[i].office}</p>
         </main>`
     }
@@ -119,12 +119,12 @@ function createEngineer() {
     for (let i = 0; i < engineerArray.length; i++){
         engineerarray2 += `<header>
         <h2>${engineerArray[i].name}</h2>
-        <h3>${engineerArray[i].position}</h3>
+        <h3>Engineer</h3>
         </header>
         <main>
         <p>${engineerArray[i].id}</p>
-        <p href="mailto:${engineerArray[i].email}">${engineerArray[i].email}</p>
-        <p href="https://github.com/${engineerArray[i].github}">${engineerArray[i].github}</p>
+        <a href="mailto:${engineerArray[i].email}">${engineerArray[i].email}</a>
+        <a href="https://github.com/${engineerArray[i].github}">${engineerArray[i].github}</a>
         </main>`
     }
     return engineerarray2
@@ -135,11 +135,11 @@ function createIntern() {
     for (let i = 0; i < internArray.length; i++){
         internarray2 += `<header>
         <h2>${internArray[i].name}</h2>
-        <h3>${internArray[i].position}</h3>
+        <h3>Intern</h3>
         </header>
         <main>
         <p>${internArray[i].id}</p>
-        <p href="mailto:${internArray[i].email}">${internArray[i].email}</p>
+        <a href="mailto:${internArray[i].email}">${internArray[i].email}</a>
         <p>${internArray[i].school}</p>
         </main>`
     }
