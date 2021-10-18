@@ -99,7 +99,7 @@ fs.writeFile('index.html', html ,function(err){
 }
 
 function createManager() {
-    const managerarray2 = ""
+    let managerarray2 = ""
     for (let i = 0; i < managerArray.length; i++){
         managerarray2 += `<header>
         <h2>${managerArray[i].name}</h2>
@@ -111,11 +111,11 @@ function createManager() {
         <p>${managerArray[i].office}</p>
         </main>`
     }
-return managerarray2
+    return managerarray2
 }
 
 function createEngineer() {
-    const engineerarray2 = ""
+    let engineerarray2 = ""
     for (let i = 0; i < engineerArray.length; i++){
         engineerarray2 += `<header>
         <h2>${engineerArray[i].name}</h2>
@@ -131,7 +131,7 @@ function createEngineer() {
 }
 
 function createIntern() {
-    const internarray2 = ""
+    let internarray2 = ""
     for (let i = 0; i < internArray.length; i++){
         internarray2 += `<header>
         <h2>${internArray[i].name}</h2>
