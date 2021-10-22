@@ -4,8 +4,8 @@ Create a program that will generate employee id cards based on node-provided dat
 
 
 Video:
-
-
+<video src='./assets/demo_vid2.mp4'></video>
+<img src="./assets/image.png"></img>
 
 
 Github:
